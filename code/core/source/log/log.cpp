@@ -8,6 +8,8 @@
 
 #include "core/header/log/log.h"
 
+const char c_default_log_file_name[] = "log.txt";
+
 Log::Log():
     m_max_message_length( c_log_max_message_length ),
     m_log_settings( c_default_log_settings ),

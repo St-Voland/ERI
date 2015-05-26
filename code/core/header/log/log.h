@@ -15,12 +15,6 @@
 #include "core/header/memory/memory_manager.h"
 #include "core/header/fs/fs.h"
 
-const s32 c_log_max_message_length = 512;
-const e_log_settings c_default_log_settings = vol_write_to_stdout; //vol_write_both;
-const s32 c_log_max_file_name = 512;
-const char c_default_log_file_name[] = "log.txt";
-const e_log_message_level c_log_message_level = vol_log_level_all;
-
 class Log
 {
 public:
@@ -41,6 +35,13 @@ public:
                       const char* format, ... );
 private:
     Log();//deprecated constructor
+
+private:
+    //default values:
+    static const s32 c_log_max_message_length = 512;
+    static const e_log_settings c_default_log_settings = vol_write_to_stdout; //vol_write_both;
+    static const s32 c_log_max_file_name = 512;
+    static const e_log_message_level c_log_message_level = vol_log_level_all;
 
 private:
     const s32 m_max_message_length;

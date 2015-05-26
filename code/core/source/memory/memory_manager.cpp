@@ -8,6 +8,9 @@
 
 #include "core/header/memory/memory_manager.h"
 
+const u32 c_stack_buffer_size = 10000;
+u8 stack_buffer[ c_stack_buffer_size + 1 ];
+
 void* vol_malloc( size_t size, e_ret_code& return_code )
 {
     //TODO: normal return codes
