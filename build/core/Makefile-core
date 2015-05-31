@@ -1,0 +1,35 @@
+# Name: Makefile-core.sh
+# Description: Makefile targets for core build
+# Author: G.Molyboga(St.George.Molyboga@gmail.com)
+# Date: 30 May, 2015
+# Review: 31 May, 2015
+
+#Makefile_core_PWD - is the current dir absolute location.
+#code_PWD - is the absolute location of code dir
+.PHONY: clean_core
+
+include $(Makefile_core_PWD)/Makefile-core-configurator
+
+OBJ_CORE_DEPENDENCIES:=$(WRAP_OBJ) $(MEM_OBJ) $(FS_OBJ) $(LOG_OBJ)
+
+#$@ - target name, $^ - all prerequisities
+$(CORE_LIB): $(OBJ_CORE_DEPENDENCIES) $(CORE_OBJ)
+	ar rcs $@ $^
+
+$(CORE_OBJ): $(OBJ_CORE_DEPENDENCIES) $(COMMON_INC)
+	$(CC) $(COMPILER_FLAGS) $(DEFINES) $(core_includeFlag) -o $(CORE_OBJ) -c $(CORE_SRC)
+
+$(WRAP_OBJ): $(WRAP_SRC) $(WRAP_INC) $(COMMON_INC)
+	$(CC) $(COMPILER_FLAGS) $(DEFINES) $(core_includeFlag) -o $(WRAP_OBJ) -c $(WRAP_SRC)
+
+$(MEM_OBJ): $(WRAP_OBJ) $(MEM_SRC) $(MEM_INC) $(COMMON_INC)
+	$(CC) $(COMPILER_FLAGS) $(DEFINES) $(core_includeFlag) -o $(MEM_OBJ) -c $(MEM_SRC)
+
+$(FS_OBJ): $(MEM_OBJ) $(WRAP_OBJ) $(FS_SRC) $(FS_INC) $(COMMON_INC)
+	$(CC) $(COMPILER_FLAGS) $(DEFINES) $(core_includeFlag) -o $(FS_OBJ) -c $(FS_SRC)
+
+$(LOG_OBJ): $(FS_OBJ) $(MEM_OBJ) $(WRAP_OBJ) $(LOG_SRC) $(LOG_INC) $(COMMON_INC)
+	$(CC) $(COMPILER_FLAGS) $(DEFINES) $(core_includeFlag) -o $(LOG_OBJ) -c $(LOG_SRC)
+
+clean_core:
+	-rm $(OBJ_CORE_DEPENDENCIES) $(CORE_OBJ) $(CORE_LIB)

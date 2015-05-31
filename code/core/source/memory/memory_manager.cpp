@@ -3,7 +3,7 @@
  * Description: source for main file in memory_manager module
  * Author: G.Molyboga(St.George.Molyboga@gmail.com)
  * Date: 26 May, 2015
- * Review: 26 May, 2015
+ * Review: 31 May, 2015
 */
 
 #include "core/header/memory/memory_manager.h"
@@ -22,6 +22,12 @@ void* vol_malloc( size_t size, e_ret_code& return_code )
     }
     return_code = vol_ok;
     return return_value;
+}
+
+void vol_free( void* ptr, e_ret_code& return_code )
+{
+    return_code = vol_ok;
+    free( ptr );
 }
 
 void* vol_memcpy( void* to, const void* from,

@@ -1,0 +1,22 @@
+# Name: Makefile-settings.sh
+# Description: some common settings for entire build
+# Author: G.Molyboga(St.George.Molyboga@gmail.com)
+# Date: 30 May, 2015
+# Review: 31 May, 2015
+
+EMPTY:=#End of string
+SPACE:= #End of string
+COMMA:=,#End of string
+SPACE+=
+
+CC:=g++
+FLAGS:=
+COMPILER_FLAGS:=-Wall -O0 -pipe
+LINKER_FLAGS:=
+DEFINES:=-DUSE_LOG
+
+ifeq ($(DEBUG),true)
+COMPILER_FLAGS+= -g 
+endif
+
+TARGET:=$(bin_PWD)/application

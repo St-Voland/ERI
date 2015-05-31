@@ -3,7 +3,7 @@
  * Description: types redefining
  * Author: G.Molyboga(St.George.Molyboga@gmail.com)
  * Date: 24 May, 2015
- * Review: 26 May, 2015
+ * Review: 31 May, 2015
 */
 
 #ifndef TYPES_H
@@ -44,10 +44,5 @@ enum e_log_message_level
     vol_log_level_magic         = 7,
     vol_log_level_none          = 8
 };
-
-
-
-
-
 
 #endif // TYPES_H

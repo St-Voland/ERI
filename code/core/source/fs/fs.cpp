@@ -3,7 +3,7 @@
  * Description: source of main file in file system module
  * Author: G.Molyboga(St.George.Molyboga@gmail.com)
  * Date: 26 May, 2015
- * Review: 26 May, 2015
+ * Review: 31 May, 2015
 */
 
 #include "core/header/fs/fs.h"
@@ -37,9 +37,7 @@ e_ret_code Vol_fs::read()
 e_ret_code Vol_fs::open( const char* file_name )
 {
     close();
-//    m_file.open( file_name, std::ios::out | std::ios::app );
     m_file = fopen( file_name, "at" );
-//    fwrite(адрес записываемой величины, размер одного экземпляра, количество записываемых величин, имя логического файла);
     return vol_ok;
 }
 

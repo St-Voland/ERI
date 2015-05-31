@@ -9,12 +9,12 @@
 #ifndef FS_H
 #define FS_H
 
-#include "core/header/types.h"
+#include "core/header/common/types.h"
 //#include <fstream>
 //#include <cstdlib>
 #include <stdio.h>
 #include <iostream>
-#include "core/header/wrappers.h"
+#include "core/header/wrappers/wrappers.h"
 
 class Vol_fs
 {

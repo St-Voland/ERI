@@ -3,13 +3,13 @@
  * Description: header for dummy wrappers on standart functions
  * Author: G.Molyboga(St.George.Molyboga@gmail.com)
  * Date: 26 May, 2015
- * Review: 26 May, 2015
+ * Review: 31 May, 2015
 */
 
 #ifndef WRAPPERS_H
 #define WRAPPERS_H
 
-#include "core/header/types.h"
+#include "core/header/common/types.h"
 #include <stdio.h>
 #include <string.h>
 

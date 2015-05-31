@@ -1,0 +1,37 @@
+# Name: Makefile-core-configurator.sh
+# Description: Makefile preparation(variables, etc.) for core build
+# Author: G.Molyboga(St.George.Molyboga@gmail.com)
+# Date: 30 May, 2015
+# Review: 31 May, 2015
+
+core_includePath:=$(code_PWD)
+core_includeFlag:=$(foreach src,$(core_includePath),-I$(src) )
+
+CORE_INC:=$(code_PWD)/core/header/core.h
+CORE_SRC:=$(code_PWD)/core/source/core.cpp
+CORE_LIB:=$(Makefile_core_PWD)/libcore.a
+
+FS_SRC:=$(wildcard $(code_PWD)/core/source/fs/*.cpp)
+LOG_SRC:=$(wildcard $(code_PWD)/core/source/log/*.cpp)
+MEM_SRC:=$(wildcard $(code_PWD)/core/source/memory/*.cpp)
+WRAP_SRC:=$(wildcard $(code_PWD)/core/source/wrappers/*.cpp)
+
+FS_INC:=$(wildcard $(code_PWD)/core/header/fs/*.h)
+LOG_INC:=$(wildcard $(code_PWD)/core/header/log/*.h)
+MEM_INC:=$(wildcard $(code_PWD)/core/header/memory/*.h)
+WRAP_INC:=$(wildcard $(code_PWD)/core/header/wrappers/*.h)
+COMMON_INC:=$(wildcard $(code_PWD)/core/header/common/*.h)
+
+#1).cpp -> .o
+#2)take pure name without path
+FS_OBJ_NAMES:=$(foreach src,$(FS_SRC),$(patsubst %.cpp,%.o,$(lastword $(subst /,$(SPACE),$(src)))))
+LOG_OBJ_NAMES:=$(foreach src,$(LOG_SRC),$(patsubst %.cpp,%.o,$(lastword $(subst /,$(SPACE),$(src)))))
+MEM_OBJ_NAMES:=$(foreach src,$(MEM_SRC),$(patsubst %.cpp,%.o,$(lastword $(subst /,$(SPACE),$(src)))))
+WRAP_OBJ_NAMES:=$(foreach src,$(WRAP_SRC),$(patsubst %.cpp,%.o,$(lastword $(subst /,$(SPACE),$(src)))))
+
+#3)write correct path for object
+FS_OBJ:=$(foreach src,$(FS_OBJ_NAMES),$(Makefile_core_PWD)/fs/$(src) )
+LOG_OBJ:=$(foreach src,$(LOG_OBJ_NAMES),$(Makefile_core_PWD)/log/$(src) )
+MEM_OBJ:=$(foreach src,$(MEM_OBJ_NAMES),$(Makefile_core_PWD)/memory/$(src) )
+WRAP_OBJ:=$(foreach src,$(WRAP_OBJ_NAMES),$(Makefile_core_PWD)/wrappers/$(src) )
+CORE_OBJ:=$(Makefile_core_PWD)/core.o
