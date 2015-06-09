@@ -1,0 +1,5 @@
+*.o
+*~
+*.header_dependency
+*.dependency
+*.a
